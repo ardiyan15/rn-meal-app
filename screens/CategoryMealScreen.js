@@ -9,7 +9,20 @@ const CategoryMealScreen = props => {
     
     const renderMealItem = itemData => {
         return (
-           <MealItem title={itemData.item.title} onSelectMeal={() => {}}/>
+           <MealItem 
+            title={itemData.item.title}
+            image={itemData.item.imageUrl}
+            duration={itemData.item.duration} 
+            complexity={itemData.item.complexity}
+            affordability={itemData.item.affordability}
+            onSelectMeal={() => {
+                props.navigation.navigate({
+                    routeName: 'MealDetail', 
+                    params: {
+                        mealId: itemData.item.id
+                    }
+                })
+            }}/>
         )
     }
     
@@ -18,7 +31,12 @@ const CategoryMealScreen = props => {
 
     return (
         <View style={styles.screen}>
-            <FlatList data={displayedMeals} keyExtractor={(item, index) => item.id } renderItem={renderMealItem} />
+            <FlatList 
+                data={displayedMeals} 
+                keyExtractor={(item, index) => item.id } 
+                renderItem={renderMealItem} 
+                style={{width: '100%'}}
+            />
         </View>
     )
 }
@@ -37,7 +55,8 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: 15
     }
 })
 
