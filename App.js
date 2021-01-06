@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, LogBox } from 'react-native';
 import * as Font from 'expo-font'
 import AppLoading  from 'expo-app-loading'
+
+// Disable Warning
+LogBox.ignoreAllLogs(true)
 
 import MealsNavigator from './navigaton/MealsNavigator'
 
